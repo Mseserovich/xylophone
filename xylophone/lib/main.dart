@@ -13,48 +13,31 @@ class XylophoneApp extends StatelessWidget {
       final player = AudioCache();
       player.play('note$note.wav');
     }
+    Color color = Colors.red;
+    Expanded buildKey({color, var num}) {
+    return Expanded(
+      child: TextButton(
+            style: TextButton.styleFrom(primary: color),
+            child: Text('Click Me'),
+            onPressed: () {
+              playSound(num);
+            },
+          ),
+      
+    );
+  }
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.orangeAccent,
         body: SafeArea(
           child: Column(
-            
-            children: [TextButton(
-              child: Text('Click Me',
-                style: TextStyle(backgroundColor: Colors.purple),),
-              onPressed: () {
-                playSound(1);
-              },
-            ),
-            TextButton(
-              
-              child: Text('Click Me',
-                style: TextStyle(backgroundColor: Colors.yellow),),
-              onPressed: () {
-                playSound(2);
-              },
-            ),
-            TextButton(
-              child: Text('Click Me',
-                style: TextStyle(backgroundColor: Colors.teal),),
-              onPressed: () {
-                playSound(3);
-              }
-            ),
-            TextButton(
-              child: Text('Click Me',
-                style: TextStyle(backgroundColor: Colors.green),),
-              onPressed: () {
-                playSound(4);
-              },
-            ),
-            TextButton(
-              child: Text('Click Me',
-                style: TextStyle(backgroundColor: Colors.red),),
-              onPressed: () {
-                playSound(5);
-              },
-            ),],
+            children: [
+              buildKey(color: Colors.black45, num:1),
+              buildKey(color: Colors.redAccent, num:2),
+              buildKey(color: Colors.green, num:3),
+              buildKey(color: Colors.purple, num:4),
+              buildKey(color: Colors.blue, num:5)
+              ],
           ),
         ),
       ),
